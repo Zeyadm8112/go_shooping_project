@@ -1,13 +1,14 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:e_commerce/screens/cart_screen.dart';
-import 'package:e_commerce/screens/favourite_screen.dart';
-import 'package:e_commerce/screens/home_screen.dart';
-import 'package:e_commerce/screens/notifications_Screen.dart';
+import 'package:e_commerce/view/screens/home_screen.dart';
+import 'package:e_commerce/view/screens/cart_screen.dart';
+import 'package:e_commerce/view/screens/favourite_screen.dart';
+import 'package:e_commerce/view/screens/notifications_Screen.dart';
 import 'package:fancy_drawer/fancy_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ionicons/ionicons.dart';
+
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);

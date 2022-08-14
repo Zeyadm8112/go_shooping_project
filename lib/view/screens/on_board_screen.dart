@@ -1,8 +1,6 @@
-import 'package:e_commerce/data/page_view_data.dart';
-import 'package:e_commerce/screens/welcome_screen.dart';
+import 'package:e_commerce/model/data/page_view_data.dart';
+import 'package:e_commerce/view/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_page_view_indicator/flutter_page_view_indicator.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -17,7 +15,7 @@ class OnBoardScreen extends StatefulWidget {
 
 class _OnBoardScreenState extends State<OnBoardScreen> {
   PageController _controller = PageController();
-  @override
+  @override 
   Widget build(BuildContext context) {
     double mWidth = MediaQuery.of(context).size.width;
     double mHeight = MediaQuery.of(context).size.height;

@@ -1,4 +1,4 @@
-import 'package:e_commerce/data/catagories_data.dart';
+import 'package:e_commerce/model/data/catagories_data.dart';
 import 'package:e_commerce/utility/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';

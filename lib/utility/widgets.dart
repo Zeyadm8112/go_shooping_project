@@ -1,11 +1,11 @@
-import 'package:e_commerce/data/image_data.dart';
+import 'package:e_commerce/model/data/image_data.dart';
 import 'package:fancy_drawer/fancy_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:ionicons/ionicons.dart';
 
-import '../screens/login_screen.dart';
-import '../screens/sign_up_screen.dart';
+import '../view/screens/login_screen.dart';
+import '../view/screens/sign_up_screen.dart';
 
 // Welcome Screen log in button widget
 Widget loginButton(double w, double h, BuildContext context) {

@@ -1,14 +1,14 @@
 import 'dart:ffi';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_commerce/data/catagories_data.dart';
-import 'package:e_commerce/data/page_view_data.dart';
 import 'package:fancy_drawer/fancy_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:ionicons/ionicons.dart';
+
+import '../../model/data/catagories_data.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
