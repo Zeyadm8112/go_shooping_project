@@ -18,11 +18,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     double mWidth = MediaQuery.of(context).size.width;
     // المتغير ده بيجيب الطول بتاع الجهاز وبستخدمه في نفس الموضوع
     double mHeight = MediaQuery.of(context).size.height;
+   const Color primaryColor = Color(0xff432267);
+   const Color secondaryColor = Color(0xffE99000);
 
     return SafeArea(
         child: Scaffold(
           //انا معرف كلاس حاطط فيه اللاوان الي مستخدمها في التطبيق
-            backgroundColor: AppColors.primaryColor,
+            backgroundColor: primaryColor,
             body: Column(
               children: [
                 // هنا مستخدم المتغير بتاع الطول عشان ادي الطول بتاع السايزد بوكس ياخد النسبة دي من الشاشة
@@ -54,7 +56,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             style: TextStyle(
                                         //انا معرف كلاس حاطط فيه اللاوان الي مستخدمها في التطبيق
 
-                                color: AppColors.secondaryColor,
+                                color: secondaryColor,
                                 fontSize: mHeight * 0.025)))
                   ],
                 ),
@@ -100,14 +102,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       height: mHeight * 0.09,
                       width: mWidth * 0.13,
                       decoration: BoxDecoration(
-                          color: AppColors.secondaryColor,
+                          color: secondaryColor,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(mHeight * 0.015),
                               bottomLeft: Radius.circular(mHeight * 0.015))),
                       child: Center(
                         child: Image.network(
                           'http://cdn.onlinewebfonts.com/svg/img_24787.png',
-                          color: AppColors.primaryColor,
+                          color: primaryColor,
                           width: mWidth * 0.08,
                         ),
                       ),
@@ -119,7 +121,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       "Zeyad Mohamed",
                       style: TextStyle(
                           fontSize: mHeight * 0.03,
-                          color: AppColors.primaryColor),
+                          color: primaryColor),
                     )
                   ]),
                 ),
@@ -137,14 +139,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       height: mHeight * 0.09,
                       width: mWidth * 0.13,
                       decoration: BoxDecoration(
-                          color: AppColors.secondaryColor,
+                          color: secondaryColor,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(mHeight * 0.015),
                               bottomLeft: Radius.circular(mHeight * 0.015))),
                       child: Center(
                         child: Image.asset(
                           'assets/images/mail.png',
-                          color: AppColors.primaryColor,
+                          color: primaryColor,
                           width: mWidth * 0.1,
                         ),
                       ),
@@ -156,7 +158,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       "Zeyadm792@gmail.com",
                       style: TextStyle(
                           fontSize: mHeight * 0.03,
-                          color: AppColors.primaryColor),
+                          color: primaryColor),
                     )
                   ]),
                 ),
@@ -174,14 +176,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       height: mHeight * 0.09,
                       width: mWidth * 0.13,
                       decoration: BoxDecoration(
-                          color: AppColors.secondaryColor,
+                          color: secondaryColor,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(mHeight * 0.015),
                               bottomLeft: Radius.circular(mHeight * 0.015))),
                       child: Center(
                         child: Image.asset(
                           'assets/images/homesharp.png',
-                          color: AppColors.primaryColor,
+                          color: primaryColor,
                           width: mWidth * 0.09,
                         ),
                       ),
@@ -193,7 +195,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       "Suez, Egypt",
                       style: TextStyle(
                           fontSize: mHeight * 0.03,
-                          color: AppColors.primaryColor),
+                          color: primaryColor),
                     )
                   ]),
                 ),
@@ -211,14 +213,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       height: mHeight * 0.09,
                       width: mWidth * 0.13,
                       decoration: BoxDecoration(
-                          color: AppColors.secondaryColor,
+                          color: secondaryColor,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(mHeight * 0.015),
                               bottomLeft: Radius.circular(mHeight * 0.015))),
                       child: Center(
                         child: Image.asset(
                          'assets/images/location.png',
-                          color: AppColors.primaryColor,
+                          color: primaryColor,
                           width: mWidth * 0.09,
                         ),
                       ),
@@ -230,7 +232,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       "El Salam 1, Osman St.",
                       style: TextStyle(
                           fontSize: mHeight * 0.03,
-                          color: AppColors.primaryColor),
+                          color: primaryColor),
                     )
                   ]),
                 ),
@@ -248,14 +250,14 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       height: mHeight * 0.09,
                       width: mWidth * 0.13,
                       decoration: BoxDecoration(
-                          color: AppColors.secondaryColor,
+                          color: secondaryColor,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(mHeight * 0.015),
                               bottomLeft: Radius.circular(mHeight * 0.015))),
                       child: Center(
                         child: Image.asset(
                           'assets/images/phone.png',
-                          color: AppColors.primaryColor,
+                          color: primaryColor,
                           width: mWidth * 0.1,
                         ),
                       ),
@@ -267,7 +269,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       "+201020622808",
                       style: TextStyle(
                           fontSize: mHeight * 0.03,
-                          color: AppColors.primaryColor),
+                          color: primaryColor),
                     )
                   ]),
                 )
@@ -282,7 +284,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
              child: Container(
               width: mWidth,
               height: mHeight * 0.07,
-              color: AppColors.secondaryColor,
+              color: secondaryColor,
               child: Center(child:Text('Save',style: TextStyle(color: Colors.white,fontSize: mHeight * 0.03),)),
              ),
            )

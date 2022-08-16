@@ -605,7 +605,8 @@ GridContainer(double mWidth, double mHeight, bool gridBool, bool listBool) {
 // /--------------------------------------------------------------------------------------------------------
 
 Widget appDrawer(double mWidth, double mHeight, BuildContext context) {
-  return Column(
+  return 
+  Column(
     children: [
       Row(
         mainAxisAlignment: MainAxisAlignment.center,

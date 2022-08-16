@@ -1,4 +1,8 @@
 import 'package:e_commerce/utility/widgets.dart';
+import 'package:e_commerce/view/screens/cart_screen.dart';
+import 'package:e_commerce/view/screens/main_screen.dart';
+import 'package:e_commerce/view/screens/order_screen.dart';
+import 'package:e_commerce/view/screens/profile_screen.dart';
 import 'package:e_commerce/view_model/wishlist_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -33,7 +37,196 @@ class _WishlistScreenState extends State<WishlistScreen> {
         slideWidth: mWidth * 0.65,
         // لو مش فاهمة اللون شوفي صفحة البروفيل الاديت
         menuBackgroundColor: AppColors.primaryColor,
-        menuScreen: appDrawer(mWidth, mHeight, context),
+        menuScreen:
+          Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: mWidth * 0.06,
+          ),
+          SizedBox(
+            width: mWidth * 0.2,
+            height: mHeight * 0.13,
+            child: Image.network(
+              'http://cdn.onlinewebfonts.com/svg/img_24787.png',
+              color: Colors.orange,
+            ),
+          ),
+        ],
+      ),
+      Center(
+        child: SizedBox(
+          // color: Colors.red,
+          height: mHeight * 0.0595,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
+                width: mWidth * 0.02,
+              ),
+              Column(
+                children: [
+                  Text(
+                    "Zeyad Mohamed",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: mHeight * 0.03,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "Zeyadm792@gmail.com",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: mHeight * 0.02,
+                      color: Colors.orange,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+      ListTile(
+        onTap: () {},
+        leading: ImageIcon(
+          AssetImage('assets/images/homeorange.png'),
+          color: AppColors.secondaryColor,
+        ),
+        title: Text(
+          "Home",
+          style: TextStyle(
+            fontSize: mHeight * 0.03,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      ListTile(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const WishlistScreen()),
+          );
+        },
+        leading: ImageIcon(
+          AssetImage('assets/images/heartorange.png'),
+          color: AppColors.secondaryColor,
+        ),
+        title: Text(
+          "Wishlist",
+          style: TextStyle(
+            fontSize: mHeight * 0.03,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      ListTile(
+        onTap: () {
+            MaterialPageRoute(builder: (context) => const CartScreen());
+        },
+        leading: ImageIcon(
+          AssetImage('assets/images/cartorange.png'),
+          color: AppColors.secondaryColor,
+        ),
+        title: Text(
+          "Cart",
+          style: TextStyle(
+            fontSize: mHeight * 0.03,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      ListTile(
+        onTap: () {
+          //  Navigator.push(context, MaterialPageRoute(builder: (context) =>  MyUi()),);
+            MaterialPageRoute(builder: (context) => const OrderScreen());
+        },
+        leading: ImageIcon(
+          AssetImage('assets/images/orderhistory.png'),
+          color: AppColors.secondaryColor,
+        ),
+        title: Text(
+          "Order History",
+          style: TextStyle(
+            fontSize: mHeight * 0.03,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      ListTile(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ProfileScreen()),
+          );
+        },
+        leading: ImageIcon(
+          AssetImage('assets/images/profile.png'),
+          color: AppColors.secondaryColor,
+        ),
+        title: Text(
+          "Profile",
+          style: TextStyle(
+            fontSize: mHeight * 0.03,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      ListTile(
+        onTap: () {
+          //  Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingController()),);
+        },
+        leading: ImageIcon(
+          AssetImage('assets/images/settings.png'),
+          color: AppColors.secondaryColor,
+        ),
+        title: Text(
+          "App Settings",
+          style: TextStyle(
+            fontSize: mHeight * 0.03,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      ListTile(
+        onTap: () {},
+        leading: Icon(Icons.question_answer, color: Colors.orange),
+        title: Text(
+          "Help & FAQs",
+          style: TextStyle(
+            fontSize: mHeight * 0.03,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      ListTile(
+        onTap: () {},
+        leading: ImageIcon(AssetImage('assets/images/logout.png'),
+            color: Colors.orange),
+        title: Text(
+          "Logout",
+          style: TextStyle(
+            fontSize: mHeight * 0.03,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      )
+    ],
+  )
+,
         mainScreen: Scaffold(
           body: SingleChildScrollView(
             child: Column(
@@ -57,8 +250,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                                   fontWeight: FontWeight.bold)),
                           IconButton(
                               onPressed: () {
-                                Navigator.pushReplacementNamed(
-                                    context, '/HomeScreen');
+            MaterialPageRoute(builder: (context) => const MainScreen());
                               },
                               icon: ImageIcon(
                                 AssetImage('assets/images/home.png'),
@@ -349,4 +541,18 @@ class _WishlistScreenState extends State<WishlistScreen> {
       ),
     );
   }
+    final List<String> imagesUrls = [
+    'assets/images/11.jpg',
+    'assets/images/12.jpg',
+    'assets/images/3.jpg',
+    'assets/images/4.jpg',
+    'assets/images/16.jpg',
+    'assets/images/6.jpg',
+    'assets/images/8.jpg',
+    'assets/images/9.jpg',
+    'assets/images/10.jpg',
+    'assets/images/14.jpg',
+    'assets/images/15.jpg',
+  ];
+
 }

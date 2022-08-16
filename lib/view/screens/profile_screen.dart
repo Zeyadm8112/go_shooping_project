@@ -1,4 +1,6 @@
 import 'package:e_commerce/utility/widgets.dart';
+import 'package:e_commerce/view/screens/edit_profile_screen.dart';
+import 'package:e_commerce/view/screens/main_screen.dart';
 import 'package:e_commerce/view/screens/wishlist_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,17 +21,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // مشروحة في صفحة اديت البروفيل
     double mWidth = MediaQuery.of(context).size.width;
     double mHeight = MediaQuery.of(context).size.height;
+    const Color primaryColor = Color(0xff432267);
+    const Color secondaryColor = Color(0xffE99000);
 
     return SafeArea(
-    // مشروحة في صفحة اديت الويشليست
+      // مشروحة في صفحة اديت الويشليست
       child: ZoomDrawer(
-                  borderRadius: 24.0,
-          showShadow: true,
-          angle: 0.0,
-          drawerShadowsBackgroundColor: Colors.grey[300]!,
-          slideWidth: mWidth * 0.65,
-          menuBackgroundColor: AppColors.primaryColor,
-
+        borderRadius: 24.0,
+        showShadow: true,
+        angle: 0.0,
+        drawerShadowsBackgroundColor: Colors.grey[300]!,
+        slideWidth: mWidth * 0.65,
+        menuBackgroundColor: AppColors.primaryColor,
         menuScreen: appDrawer(mWidth, mHeight, context),
         mainScreen: Scaffold(
           backgroundColor: Colors.white,
@@ -81,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         // crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                            MenuIcon(mHeight,context),
+                          MenuIcon(mHeight, context),
                           Text("Profile",
                               style: TextStyle(
                                   color: Colors.white,
@@ -89,8 +92,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   fontWeight: FontWeight.bold)),
                           IconButton(
                               onPressed: () {
-                                Navigator.pushReplacementNamed(
-                                    context, '/HomeScreen');
+                                MaterialPageRoute(
+                                    builder: (context) => const MainScreen());
                               },
                               icon: ImageIcon(
                                 AssetImage('assets/images/home.png'),
@@ -103,13 +106,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(height: mHeight * 0.04),
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, '/EditProfileScreen');
+                    MaterialPageRoute(
+                        builder: (context) => const EditProfileScreen());
                   },
                   child: Container(
                     height: mHeight * 0.08,
                     width: mWidth * 0.8,
                     decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
+                        color: primaryColor,
                         borderRadius: BorderRadius.circular(mHeight * 0.01)),
                     child: Row(children: [
                       IconButton(
@@ -137,14 +141,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: mHeight * 0.08,
                     width: mWidth * 0.8,
                     decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
+                        color: primaryColor,
                         borderRadius: BorderRadius.circular(mHeight * 0.01)),
                     child: Row(children: [
                       IconButton(
                         onPressed: () {},
                         icon: ImageIcon(
                           AssetImage('assets/images/cart.png'),
-                          color: Colors.orangeAccent,
+                          color: secondaryColor,
                         ),
                       ),
                       Text("Cart",
@@ -165,14 +169,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: mHeight * 0.08,
                     width: mWidth * 0.8,
                     decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
+                        color:primaryColor,
                         borderRadius: BorderRadius.circular(mHeight * 0.01)),
                     child: Row(children: [
                       IconButton(
                         onPressed: () {},
                         icon: ImageIcon(
                           AssetImage('assets/images/heartorange.png'),
-                          color: Colors.orangeAccent,
+                          color: secondaryColor,
                         ),
                       ),
                       Text("Wishlist",
@@ -193,14 +197,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: mHeight * 0.08,
                     width: mWidth * 0.8,
                     decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
+                        color:primaryColor,
                         borderRadius: BorderRadius.circular(mHeight * 0.01)),
                     child: Row(children: [
                       IconButton(
                         onPressed: () {},
                         icon: ImageIcon(
                           AssetImage('assets/images/orderhistory.png'),
-                          color: Colors.orangeAccent,
+                          color: secondaryColor,
                         ),
                       ),
                       Text("Order History",
@@ -221,14 +225,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     height: mHeight * 0.08,
                     width: mWidth * 0.8,
                     decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
+                        color: primaryColor,
                         borderRadius: BorderRadius.circular(mHeight * 0.01)),
                     child: Row(children: [
                       IconButton(
                         onPressed: () {},
                         icon: Icon(
                           Icons.edit_calendar_rounded,
-                          color: Colors.orangeAccent,
+                          color:secondaryColor,
                         ),
                       ),
                       Text("Cards",
