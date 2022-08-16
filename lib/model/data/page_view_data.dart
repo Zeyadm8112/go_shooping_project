@@ -16,18 +16,18 @@ class Data {
   final List<Data> myData = [
     Data(
         title:
-            "We strive to have a positive impact on customers ,employees ,the econome  and communities.",
-        imageurl: "assets/images/anim1.json",
+            "We strive to have a positive impact on customers, employees, the economy and communities.",
+        imageurl: "assets/images/onboarding1.png",
         ),
     Data(
         title:
-            "We promote the fact that we offer free shipping for all orders.",
+            "\"We promote the fact that we offer free shipping for all orders.",
 
-        imageurl: "assets/images/anim2.json",
+        imageurl: "assets/images/onboarding2.png",
         ),
     Data(
         title:
             "Be sure to log in to be able to book newly added offers.",
-        imageurl: "assets/images/anim3.json",
+        imageurl: "assets/images/onboarding3.png",
         )
   ];

@@ -43,6 +43,10 @@ dependencies:
   carousel_slider: ^4.1.1
   flutter_staggered_grid_view: ^0.6.2
   fancy_drawer: ^2.0.0
+  provider: ^6.0.3
+  flutter_zoom_drawer: ^3.0.3
+  flutter_rating_bar: ^4.0.1
+  hexcolor: ^2.0.7
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -95,6 +99,47 @@ flutter:
     - assets/images/14.jpg
     - assets/images/15.jpg
     - assets/images/16.jpg
+    - assets/images/applogo.png
+    - assets/images/appname.png
+    - assets/images/applogo1.png
+    - assets/images/onboarding1.png
+    - assets/images/onboarding2.png
+    - assets/images/onboarding3.png
+    - assets/images/cart.png
+    - assets/images/menu.png
+    - assets/images/homeorange.png
+    - assets/images/heartorange.png
+    - assets/images/cartorange.png
+    - assets/images/profile.png
+    - assets/images/settings.png
+    - assets/images/logout.png
+    - assets/images/7b5fd9f074cf1ec3709271398dcf653a.jpg
+    - assets/images/627a73ab619010e5cb47a574_free-jewelry-logo-maker.png
+    - assets/images/download (1).png
+    - assets/images/download (2).png
+    - assets/images/Tween-fashion-she-will-love.jpg
+    - assets/images/images.jpg
+    - assets/images/WhatsApp Image 2022-08-04 at 12.26.33 PM.jpeg
+    - assets/images/photo-1581338834647-b0fb40704e21.jpg
+    - assets/images/lovepik-fashion-suit-outer-model-sitting-on-a-high-stool-picture_501399719.jpg
+    - assets/images/pexels-photo-2065200.webp
+    - assets/images/pexels-photo-983564.jpeg
+    - assets/images/Sample_User_icon.png
+    - assets/images/home.png
+    - assets/images/edit.png
+    - assets/images/orderhistory.png
+    - assets/images/edit2.png
+    - assets/images/mail.png
+    - assets/images/phone.png
+    - assets/images/location.png
+    - assets/images/homesharp.png
+    - assets/images/grid.png
+    - assets/images/list.png
+    - assets/images/filter.png
+    - assets/images/remove.png
+
+
+
 
     # - images/a_dot_ham.jpeg
 

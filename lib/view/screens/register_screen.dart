@@ -1,3 +1,4 @@
+import 'package:e_commerce/view/screens/home_screen.dart';
 import 'package:e_commerce/view/screens/login_screen.dart';
 import 'package:e_commerce/utility/widgets.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +6,8 @@ import 'package:ionicons/ionicons.dart';
 
 import 'main_screen.dart';
 
-class SignUpScreen extends StatefulWidget {
-  SignUpScreen({Key? key, this.title}) : super(key: key);
+class RegisterScreen extends StatefulWidget {
+  RegisterScreen({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
@@ -14,7 +15,7 @@ class SignUpScreen extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<SignUpScreen> {
+class _LoginPageState extends State<RegisterScreen> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _userPasswordController = TextEditingController();
@@ -178,10 +179,7 @@ class _LoginPageState extends State<SignUpScreen> {
                         if (formKey.currentState!.validate()) {
                           // _showMyDialog();
                           // Navigator.pushReplacement(context, RoutePageBuilder(context)=>))
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MainScreen()));
+                          Navigator.pushReplacementNamed(context, '/HomeScreen');
                         } else {}
                         //Auth Logic Here!!!!
                       },

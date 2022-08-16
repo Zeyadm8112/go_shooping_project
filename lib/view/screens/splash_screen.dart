@@ -1,4 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:e_commerce/utility/app_colors.dart';
 import 'package:e_commerce/view/screens/on_board_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -9,12 +10,39 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mWidth = MediaQuery.of(context).size.width;
+    final mHeight = MediaQuery.of(context).size.height;
+
     return AnimatedSplashScreen(
-      splash: 'assets/images/logo.png',
-      splashIconSize:  200,
-      backgroundColor: Colors.purple,
+      splash: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              // color: Colors.white,
+              height: mHeight * 0.4,
+              width: mWidth * 0.4,
+              child: FittedBox(child:             Image.asset(
+              'assets/images/applogo1.png',
+            ),
+            fit: BoxFit.fitWidth,
+),
+            ),
+
+            // Image.asset(
+            //   'assets/images/applogo.png',
+            //   scale: mHeight * 0.0005,
+            // ),
+            // SizedBox(
+            //   height: mHeight * 0.02,
+            // ),
+            Image.asset('assets/images/appname.png'),
+          ],
+        ),
+      ),
+      splashIconSize: mHeight * 0.6,
+      backgroundColor: AppColors.primaryColor,
       nextScreen: OnBoardScreen(),
-      splashTransition: SplashTransition.fadeTransition,
+      splashTransition: SplashTransition.slideTransition,
     );
   }
 }
