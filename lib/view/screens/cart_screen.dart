@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_braintree/flutter_braintree.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -184,7 +185,23 @@ class CartScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () async{
+var request= BraintreeDropInRequest(
+  tokenizationKey: 'gnwdw8j2ttjrk35t',
+  collectDeviceData: true,
+  paypalRequest: BraintreePayPalRequest(amount: '10.0',
+  displayName: 'GoShop',
+  
+  ),
+  cardEnabled: true
+  
+);
+BraintreeDropInResult? result= await BraintreeDropIn.start(request);
+if(result !=null){
+  print(result.paymentMethodNonce.description);
+  print(result.paymentMethodNonce.nonce);
+}
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

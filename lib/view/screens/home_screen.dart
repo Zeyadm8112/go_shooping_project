@@ -11,6 +11,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 
 import '../../model/data/catagories_data.dart';
+import '../widgets/shirts_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeHomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController searcController = TextEditingController();
     double mWidth = MediaQuery.of(context).size.width;
     double mHeight = MediaQuery.of(context).size.height;
     final provider = Provider.of<HomeViewModel>(context);
@@ -40,6 +42,177 @@ class _HomeHomeScreenState extends State<HomeScreen> {
               duration: const Duration(seconds: 3))
           .show(context);
       provider.state = HomeScreenState.loaded;
+    } else {
+      if (provider.state == HomeScreenState.searching) {
+        return SafeArea(
+            child: Scaffold(
+                backgroundColor: Colors.white,
+                body: SingleChildScrollView(
+                    child: Column(children: [
+                  SizedBox(
+                    height: mHeight * 0.01,
+                  ),
+                  Row(
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            provider.setState(HomeScreenState.loaded);
+                          },
+                          icon: Icon(
+                            Icons.close,
+                            color: AppColors.primaryColor,
+                          ))
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(mHeight * 0.02),
+                    child: TextField(
+                      controller: searcController,
+                      style: TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                        labelStyle: TextStyle(color: Colors.black),
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black)),
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black)),
+                        fillColor: Colors.black,
+                        focusColor: Colors.black,
+                        hoverColor: Colors.black,
+                        labelText: "Search by item's name",
+                      ),
+                      onChanged: (value) => setState(() {
+                        provider.itemSearch(value);
+                      }),
+                    ),
+                  ),
+                  SizedBox(
+                    height: mHeight * 0.01,
+                  ),
+                  SizedBox(
+                    height: mHeight * 0.6,
+                    width: mWidth,
+                    child: SizedBox(
+                      height: mHeight * 0.7,
+                      width: mWidth,
+                      child: showTab(
+                          mWidth, mHeight, context, provider.searchedItem),
+                    ),
+                  ),
+                ]))));
+      } else if (provider.state == HomeScreenState.filtering) {
+        return SafeArea(
+            child: Scaffold(
+                backgroundColor: Colors.white,
+                body: SingleChildScrollView(
+                    child: Column(children: [
+                  SizedBox(
+                    height: mHeight * 0.01,
+                  ),
+                  Row(
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            provider.setState(HomeScreenState.loaded);
+                          },
+                          icon: Icon(
+                            Icons.close,
+                            color: AppColors.primaryColor,
+                          ))
+                    ],
+                  ),
+                  SizedBox(
+                    height: mHeight * 0.01,
+                  ),
+                  DropdownButton<String>(
+                    // value: _selectedScheduleName,
+                    hint: Text("Filter By"),
+                    items: <String>[
+                      'Shirts',
+                      'Pants',
+                      'Skirts',
+                      'Shorts',
+                      'Scarfs'
+                    ].map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    onChanged: (val) {
+                      provider.dropCheck(val!);
+                    },
+                    value: provider.selectedCategoryName,
+                  ),
+                                    SizedBox(
+                    height: mHeight * 0.01,
+                  ),
+
+// SizedBox(
+//                         height: mHeight * 0.7,
+//                         width: mWidth,
+//                         child: showTab(
+//                           mWidth,
+//                           mHeight,
+//                           context,
+//                           provider.selectedCategoryId == 0
+//                               ? provider.showShirts()
+//                               : provider.selectedCategoryId == 1
+//                                   ? provider.showPants() 
+//                                   : provider.selectedCategoryId == 2
+//                                       ? provider.showSkirts()
+//                                       : provider.selectedCategoryId == 3
+//                                           ? provider.()
+//                                           : provider.showScarfs(),
+//                         )),
+                  SizedBox(
+                    height: mHeight * 0.8,
+                    width: mWidth,
+                    child:  FutureBuilder(
+                              future: provider.selectedCategoryId == 0
+                              ? provider.showShirts()
+                              : provider.selectedCategoryId == 1
+                                  ? provider.showPants()
+                                  : provider.selectedCategoryId == 2
+                                      ? provider.showShorts()
+                                      : provider.selectedCategoryId == 3
+                                          ? provider.showSkirts()
+                                          : provider.showScarfs(),
+                              builder: (context, snapshot) {
+                                switch (snapshot.connectionState) {
+                                  case ConnectionState.waiting:
+                                    return const Center(
+                                      child: CircularProgressIndicator(
+                                          color: AppColors.primaryColor),
+                                    );
+
+                                  case ConnectionState.done:
+
+                                  default:
+                                    if (snapshot.hasError) {
+                                      return Center(
+                                        child: Text("error"),
+                                      );
+                                    } else if (snapshot.hasData) {
+                                      return showTab(mWidth, mHeight, context,
+                                        provider.selectedCategoryId == 0
+                              ? provider.shirts
+                              : provider.selectedCategoryId == 1
+                                  ? provider.pants
+                                  : provider.selectedCategoryId == 2
+                                      ? provider.skirt
+                                      : provider.selectedCategoryId == 3
+                                          ? provider.shorts
+                                          : provider.skarfs
+                                        );
+                                    } else {
+                                      return Text("noData");
+                                    }
+                                }
+                              }),
+                        
+                  ),
+                ]))));
+      }
     }
 
     return SafeArea(
@@ -91,25 +264,33 @@ class _HomeHomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                provider.state = HomeScreenState.searching;
+                              },
                               icon: Icon(Icons.search_outlined,
                                   color: Colors.grey),
                             ),
-                            SizedBox(
-                              width: mWidth * 0.5,
-                              height: mHeight * 0.05,
-                              child: const TextField(
-                                // textAlign: TextAlign.end,
-                                // textAlignVertical: TextAlignVertical.bottom,
-                                decoration: InputDecoration(
-                                  label: Text('search'),
-                                  labelStyle: TextStyle(color: Colors.grey),
-                                  border: InputBorder.none,
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  provider.state = HomeScreenState.searching;
+                                });
+                              },
+                              child: SizedBox(
+                                width: mWidth * 0.5,
+                                height: mHeight * 0.05,
+                                child: Text(
+                                  'search',
+                                  style: TextStyle(color: Colors.grey),
                                 ),
                               ),
                             ),
                             IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  provider.state = HomeScreenState.filtering;
+                                });
+                              },
                               icon: ImageIcon(
                                   AssetImage('assets/images/filter.png'),
                                   color: Colors.grey),
@@ -136,7 +317,7 @@ class _HomeHomeScreenState extends State<HomeScreen> {
                         TextButton(
                             onPressed: () {},
                             child: Text(
-                              "See all (${provider.categories?.length??0})",
+                              "See all (${provider.categories?.length ?? 0})",
                               style: TextStyle(
                                   fontSize: mHeight * 0.025,
                                   color: Colors.grey),
@@ -269,9 +450,7 @@ class _HomeHomeScreenState extends State<HomeScreen> {
                                                 mHeight * 0.02),
                                             image: DecorationImage(
                                                 image: NetworkImage(
-'http://ecommerceicecode-001-site1.htempurl.com//IMG/${provider.products![index].imagePath}'
-
-                                                ),
+                                                    'http://ecommerceicecode-001-site1.htempurl.com//IMG/${provider.products![index].imagePath}'),
                                                 fit: BoxFit.fill),
                                           ),
                                           child: Stack(
@@ -345,7 +524,10 @@ class _HomeHomeScreenState extends State<HomeScreen> {
                                                                   .center,
                                                           children: [
                                                             Text(
-                                                              provider.products![index].productName,
+                                                              provider
+                                                                  .products![
+                                                                      index]
+                                                                  .productName,
                                                               style: TextStyle(
                                                                   color: AppColors
                                                                       .primaryColor,
