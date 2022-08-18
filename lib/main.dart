@@ -7,14 +7,31 @@ import 'package:e_commerce/view/screens/main_screen.dart';
 import 'package:e_commerce/view/screens/order_screen.dart';
 import 'package:e_commerce/view/screens/register_screen.dart';
 import 'package:e_commerce/view/screens/splash_screen.dart';
+import 'package:e_commerce/view/screens/wishlist_screen.dart';
+import 'package:e_commerce/view_model/home_view_model.dart';
 import 'package:e_commerce/view_model/main_screen_view_model.dart';
 import 'package:e_commerce/view_model/onboarding_view_model.dart';
+import 'package:e_commerce/view_model/register_view_model.dart';
+import 'package:e_commerce/view_model/token_view_model.dart';
 import 'package:e_commerce/view_model/wishlist_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+SharedPreferences? sharedPref;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  sharedPref = await SharedPreferences.getInstance();
   runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (context) => TokenViewModel(),
+    ),
+    ChangeNotifierProvider(
+      create: (context) => RegisterViewModel(),
+    ),
+    ChangeNotifierProvider(
+      create: (context) => HomeViewModel(),
+    ),
     ChangeNotifierProvider(
       create: (context) => OnBoardingViewModel(),
     ),
@@ -55,6 +72,8 @@ class MyApp extends StatelessWidget {
         '/EditProfileScreen': (context) => EditProfileScreen(),
         '/OrderScreen': (context) => OrderScreen(),
         '/CartScreen': (context) => CartScreen(),
+        '/SplashScreen': (context) => SplashScreen(),
+        '/WishlistScreen': (context) => WishlistScreen(),
       },
     );
   }

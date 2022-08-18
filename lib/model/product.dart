@@ -11,59 +11,39 @@ String productToJson(Product data) => json.encode(data.toJson());
 class Product {
   Product({
     required this.id,
-    required this.title,
-    required this.price,
-    required this.description,
+    required this.productName,
+    required this.productDescription,
+    required this.deliveryTime,
+    required this.imagePath,
+    required this.categoryId,
     required this.category,
-    required this.image,
-    required this.rating,
   });
 
   int id;
-  String title;
-  double price;
-  String description;
+  String productName;
+  String productDescription;
+  int deliveryTime;
+  String imagePath;
+  int categoryId;
   String category;
-  String image;
-  Rating rating;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-        id: json["id"],
-        title: json["title"],
-        price: json["price"].toDouble(),
-        description: json["description"],
-        category: json["category"],
-        image: json["image"],
-        rating: Rating.fromJson(json["rating"]),
+        id: json["ID"],
+        productName: json["ProductName"],
+        productDescription: json["ProductDescription"],
+        deliveryTime: json["DeliveryTime"],
+        imagePath: json["ImagePath"],
+        categoryId: json["CategoryID"],
+        category: json["Category"],
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "title": title,
-        "price": price,
-        "description": description,
-        "category": category,
-        "image": image,
-        "rating": rating.toJson(),
-      };
-}
-
-class Rating {
-  Rating({
-    required this.rate,
-    required this.count,
-  });
-
-  double rate;
-  int count;
-
-  factory Rating.fromJson(Map<String, dynamic> json) => Rating(
-        rate: json["rate"].toDouble(),
-        count: json["count"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "rate": rate,
-        "count": count,
+        "ID": id,
+        "ProductName": productName,
+        "ProductDescription": productDescription,
+        "DeliveryTime": deliveryTime,
+        "ImagePath": imagePath,
+        "CategoryID": categoryId,
+        "Category": category,
       };
 }

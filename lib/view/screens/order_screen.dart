@@ -214,9 +214,8 @@ class OrderScreen extends StatelessWidget {
                                                 Radius.circular(mHeight * 0.01),
                                             topLeft: Radius.circular(
                                                 mHeight * 0.02))),
-                                    child: ImageIcon(
-                                      AssetImage(
-                                          'assets/images/heartorange.png'),
+                                    child:Icon(
+Icons.share,
                                       color: AppColors.secondaryColor,
                                     ),
                                   ),

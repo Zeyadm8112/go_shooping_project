@@ -1,6 +1,9 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:e_commerce/utility/app_colors.dart';
 import 'package:e_commerce/utility/widgets.dart';
+import 'package:e_commerce/view_model/token_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'main_screen.dart';
 
@@ -22,11 +25,27 @@ class _LoginScreenState extends State<LoginScreen> {
 
   String _userName = "";
   String _userPassword = "";
-
   @override
   Widget build(BuildContext context) {
     final mHeight = MediaQuery.of(context).size.height;
     final mWidth = MediaQuery.of(context).size.width;
+    var provider = Provider.of<TokenViewModel>(context);
+if (provider.state == ScreenState.loading) {
+      return SafeArea(
+        child: Scaffold(
+        backgroundColor: AppColors.primaryColor,
+            body:const Center(
+              child: CircularProgressIndicator(color: AppColors.secondaryColor),
+            )),
+      );
+    } else if (provider.state == ScreenState.failed) {
+      AnimatedSnackBar.material(provider.errorMessage,
+              type: AnimatedSnackBarType.error,
+              mobileSnackBarPosition: MobileSnackBarPosition.bottom,
+              duration: const Duration(seconds: 3))
+          .show(context);
+          provider.state=ScreenState.loaded;
+    }
     return SafeArea(
       child: Scaffold(
           backgroundColor: AppColors.primaryColor,
@@ -122,8 +141,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                        // SizedBox(height: mHeight * 0.02),
-                        // InkWell(
                         //   onTap: () {
                         //     if (formKey.currentState!.validate()) {
                         //     } else {
@@ -133,31 +150,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         //               builder: (context) => MainScreen()));
                         //     }
                         //   },
-                        //   child: Container(
-                        //     width: mWidth,
-                        //     padding:
-                        //         EdgeInsets.symmetric(vertical: mHeight * 0.02),
-                        //     alignment: Alignment.center,
-                        //     decoration: BoxDecoration(
-                        //         borderRadius: BorderRadius.all(
-                        //             Radius.circular(mHeight * 0.01)),
-                        //         boxShadow: <BoxShadow>[
-                        //           BoxShadow(
-                        //               color: Colors.purple.withAlpha(100),
-                        //               offset: Offset(2, 4),
-                        //               blurRadius: 8,
-                        //               spreadRadius: 2)
-                        //         ],
-                        //         color: Colors.purple),
-                        //     child: Text(
-                        //       'Login',
-                        //       style: TextStyle(
-                        //           fontSize: mHeight * 0.03,
-                        //           color: Colors.white),
-                        //     ),
-                        //   ),
-                        // ),
-
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,10 +177,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                        } else {
-                          Navigator.pushReplacementNamed(
-                              context, '/MainScreen');
-                        }
+                          _userName = _userNameController.text;
+                          _userPassword = _userPasswordController.text;
+                          provider.fetchTokens(
+                              _userName, _userPassword, context);
+                        } else {}
                       },
                       child: Text(
                         "Log in",

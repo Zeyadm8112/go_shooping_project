@@ -17,35 +17,41 @@ class CatogaryData {
     CatogaryData(
         title:
             "Fashion",
-        imageurl: "assets/images/fashion.jpg",
+        imageurl: "assets/images/shirts.jpg",
         ),
     CatogaryData(
         title:
             "Women",
 
-        imageurl: "assets/images/fashion2.jpg",
+        imageurl: "assets/images/bags.jpg",
         ),
     CatogaryData(
         title:
             "Accessoiry",
-        imageurl: "assets/images/acces.jpg",
+        imageurl: "assets/images/shoes1.jpg",
         ),
             CatogaryData(
         title:
             "Babies ",
-        imageurl: "assets/images/baby.jpg",
+        imageurl: "assets/images/pants.jpg",
+        ),
+                    CatogaryData(
+        title:
+            "Babies ",
+        imageurl: "assets/images/skirts.jpg",
         )
+
 ,
     CatogaryData(
         title:
             "Home Office",
-        imageurl: "assets/images/home_fashion.jpg",
+        imageurl: "assets/images/shorts.jpg",
         )
 ,
     CatogaryData(
         title:
             "Shoes",
-        imageurl: "assets/images/shoes.jpg",
+        imageurl: "assets/images/scarfs.jpg",
         )
 
   ];

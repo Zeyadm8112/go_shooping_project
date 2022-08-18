@@ -11,6 +11,7 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:ionicons/ionicons.dart';
 
+import '../main.dart';
 import '../view/screens/login_screen.dart';
 import '../view/screens/register_screen.dart';
 
@@ -605,8 +606,7 @@ GridContainer(double mWidth, double mHeight, bool gridBool, bool listBool) {
 // /--------------------------------------------------------------------------------------------------------
 
 Widget appDrawer(double mWidth, double mHeight, BuildContext context) {
-  return 
-  Column(
+  return Column(
     children: [
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -661,7 +661,9 @@ Widget appDrawer(double mWidth, double mHeight, BuildContext context) {
         ),
       ),
       ListTile(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, '/MainScreen');
+        },
         leading: ImageIcon(
           AssetImage('assets/images/homeorange.png'),
           color: AppColors.secondaryColor,
@@ -677,10 +679,8 @@ Widget appDrawer(double mWidth, double mHeight, BuildContext context) {
       ),
       ListTile(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const WishlistScreen()),
-          );
+          Navigator.pushNamed(context, '/WishlistScreen');
+        
         },
         leading: ImageIcon(
           AssetImage('assets/images/heartorange.png'),
@@ -780,7 +780,11 @@ Widget appDrawer(double mWidth, double mHeight, BuildContext context) {
         ),
       ),
       ListTile(
-        onTap: () {},
+        onTap: () {
+          sharedPref!.remove('roleName');
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/LoginScreen', (route) => true);
+        },
         leading: ImageIcon(AssetImage('assets/images/logout.png'),
             color: Colors.orange),
         title: Text(

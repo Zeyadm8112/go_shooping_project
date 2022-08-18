@@ -106,8 +106,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(height: mHeight * 0.04),
                 InkWell(
                   onTap: () {
-                    MaterialPageRoute(
-                        builder: (context) => const EditProfileScreen());
+                    Navigator.pushNamed(context, '/EditProfileScreen');
                   },
                   child: Container(
                     height: mHeight * 0.08,
@@ -136,7 +135,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   height: mHeight * 0.03,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/CartScreen');
+                  },
                   child: Container(
                     height: mHeight * 0.08,
                     width: mWidth * 0.8,
@@ -164,12 +165,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   height: mHeight * 0.03,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/WishlistScreen');
+                  },
                   child: Container(
                     height: mHeight * 0.08,
                     width: mWidth * 0.8,
                     decoration: BoxDecoration(
-                        color:primaryColor,
+                        color: primaryColor,
                         borderRadius: BorderRadius.circular(mHeight * 0.01)),
                     child: Row(children: [
                       IconButton(
@@ -192,12 +195,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   height: mHeight * 0.03,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/OrderScreen');
+                  },
                   child: Container(
                     height: mHeight * 0.08,
                     width: mWidth * 0.8,
                     decoration: BoxDecoration(
-                        color:primaryColor,
+                        color: primaryColor,
                         borderRadius: BorderRadius.circular(mHeight * 0.01)),
                     child: Row(children: [
                       IconButton(
@@ -232,7 +237,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         onPressed: () {},
                         icon: Icon(
                           Icons.edit_calendar_rounded,
-                          color:secondaryColor,
+                          color: secondaryColor,
                         ),
                       ),
                       Text("Cards",

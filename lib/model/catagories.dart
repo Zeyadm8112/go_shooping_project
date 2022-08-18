@@ -4,6 +4,26 @@
 
 import 'dart:convert';
 
-List<String> categoriesFromJson(String str) => List<String>.from(json.decode(str).map((x) => x));
+List<Categories> categoriesFromJson(String str) => List<Categories>.from(json.decode(str).map((x) => Categories.fromJson(x)));
 
-String categoriesToJson(List<String> data) => json.encode(List<dynamic>.from(data.map((x) => x)));
+String categoriesToJson(List<Categories> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
+class Categories {
+    Categories({
+     required  this.id,
+    required    this.category,
+    });
+
+    int id;
+    String category;
+
+    factory Categories.fromJson(Map<String, dynamic> json) => Categories(
+        id: json["ID"],
+        category: json["Category"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "ID": id,
+        "Category": category,
+    };
+}

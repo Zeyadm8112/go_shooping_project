@@ -22,6 +22,7 @@ class WishlistViewModel extends ChangeNotifier {
    gridColor = AppColors.primaryColor;
 
     notifyListeners();
-  }
 
+
+}
 }

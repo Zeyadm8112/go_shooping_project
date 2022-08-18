@@ -1,5 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:e_commerce/main.dart';
 import 'package:e_commerce/utility/app_colors.dart';
+import 'package:e_commerce/view/screens/main_screen.dart';
 import 'package:e_commerce/view/screens/on_board_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -41,8 +43,9 @@ class SplashScreen extends StatelessWidget {
       ),
       splashIconSize: mHeight * 0.6,
       backgroundColor: AppColors.primaryColor,
-      nextScreen: OnBoardScreen(),
       splashTransition: SplashTransition.slideTransition,
+            nextScreen: sharedPref!.getString('roleName')==null?OnBoardScreen():MainScreen()
+
     );
   }
 }
